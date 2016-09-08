@@ -1,8 +1,10 @@
 /*==========TDD Algorithms codeWars============*/
  
  /*
-For numbers, strings and booleans use Test.assertEquals()
-For arrays and objects use Test.assertSimilar()
+For numbers, strings and booleans use Test.assertEquals();
+For arrays and objects use Test.assertSimilar();
+
+DON'T use expect();
  */
 
  
@@ -43,3 +45,45 @@ describe("Max Product", function(){
 });
 
 //assertEquals(function(arg), 'Expected output');
+
+function removeSmallest (array){
+var smallest = Math.min.apply(Math, array);
+array.splice(array.indexOf(smallest),1);
+return array;
+
+}
+
+removeSmallest([5,3,2,1,4]);
+
+
+Test.decribe("removeSmallest", function(){
+  Test.it("works for the following examples", function(){
+    Test.assertSimilar(removeSmallest([1,2,3,4,5], [2,3,4,5], "Wrong answer result for [1,2,3,4,5]");
+    Test.assertSimilar(removeSmallest([5, 3, 2, 1, 4]), [5,3,2,4], "Wrong answer for [5,3,2,1,4]");  
+  });
+});
+
+
+
+function stutter (str){
+  str = str.split('');
+  var results=[];
+  for(var i=0;i<str.length;i++){
+    results.push(str[i].toUpperCase()+ new Array(i+1).join(str[i].toLowerCase()));
+  }
+  return results;
+}
+
+stutter ("ZpglnRxqenU");
+
+Test.describe("stutter",function() {
+Test.it("Basic tests",function() {   
+                Test.assertEquals(accum("ZpglnRxqenU"), "Z-Pp-Ggg-Llll-Nnnnn-Rrrrrr-Xxxxxxx-Qqqqqqqq-Eeeeeeeee-Nnnnnnnnnn-Uuuuuuuuuuu");
+                Test.assertEquals(accum("NyffsGeyylB"), "N-Yy-Fff-Ffff-Sssss-Gggggg-Eeeeeee-Yyyyyyyy-Yyyyyyyyy-Llllllllll-Bbbbbbbbbbb");
+                Test.assertEquals(accum("MjtkuBovqrU"), "M-Jj-Ttt-Kkkk-Uuuuu-Bbbbbb-Ooooooo-Vvvvvvvv-Qqqqqqqqq-Rrrrrrrrrr-Uuuuuuuuuuu");
+                Test.assertEquals(accum("EvidjUnokmM"), "E-Vv-Iii-Dddd-Jjjjj-Uuuuuu-Nnnnnnn-Oooooooo-Kkkkkkkkk-Mmmmmmmmmm-Mmmmmmmmmmm");
+                Test.assertEquals(accum("HbideVbxncC"), "H-Bb-Iii-Dddd-Eeeee-Vvvvvv-Bbbbbbb-Xxxxxxxx-Nnnnnnnnn-Cccccccccc-Ccccccccccc");
+})})
+
+
+
