@@ -86,4 +86,14 @@ Test.it("Basic tests",function() {
 })})
 
 
+function statusEmp (name){
+  for(var i=0;i<employees.length;i++){
+    if(employees[i].firstName + ' ' + employees[i].lastName===name){
+      return employees[i].role;
+    }
+  }
+  return "Does not work here!";
+}
 
+Test.assertEquals(statusEmp("Dipper Pines"), "Does not work here");
+Test.assertEquals(statusEmp("Morty Smith"), "Truck Driver");
